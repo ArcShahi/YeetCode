@@ -1,6 +1,5 @@
 // 1. Two Sum
 
-
 #include <vector>
 #include <unordered_map>
 class Solution {
