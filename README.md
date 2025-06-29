@@ -10,7 +10,8 @@ I've more than one solutions for problems which I'll also keep updating as I fin
 
 I also try to avoid recursion so most the problems use Iterative apporach.
 
-Here's the Index : 
-## INDEX : 
+Here's the Index : https://github.com/ArcShahi/YeetCode/blob/main/INDEX.md
+
+## FAQ :
 
 
