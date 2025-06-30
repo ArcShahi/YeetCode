@@ -1,7 +1,5 @@
 // 1823. Find the Winner of the Circular Game
 
-#include <list>
-
 class Solution {
 public:
      int findTheWinner(int n, int k) {

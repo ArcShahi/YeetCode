@@ -1,5 +1,4 @@
-
-// Rotate Image
+// 48. Rotate Image
 #include <vector>
 #include <algorithm>
 
