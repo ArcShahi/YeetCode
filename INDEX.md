@@ -120,6 +120,7 @@ List of solved problems:
 - [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1689.cpp)
 - [1784. Check if Binary String Has at Most One Segment of Ones](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1784.cpp)
 - [1812. Determine Color of a Chessboard Square](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1812.cpp)
+- [1823. Find the Winner of the Circular Game](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1823.cpp)
 - [1863. Sum of All Subset XOR Totals](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1863.cpp)
 - [1869. Longer Contiguous Segments of Ones than Zeros](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1869.cpp)
 - [1920. Build Array from Permutation](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1920.cpp)
