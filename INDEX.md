@@ -1,6 +1,4 @@
-# YeetCode Solutions
-
-List of solved problems:
+# YeetCode Solutions :
 
 - [1. Two Sum](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1.cpp)
 - [Add Two Numbers](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/2.cpp)
@@ -20,6 +18,7 @@ List of solved problems:
 - [31. Next Permutation](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/31.cpp)
 - [46. Permutations](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/46.cpp)
 - [47. Permutations II](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/47.cpp)
+- [48. Rotate Image](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/48.cpp)
 - [49. Group Anagrams](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/49.cpp)
 - [55. Jump Game](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/55.cpp)
 - [60. Permutation Sequence](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/60.cpp)
@@ -113,6 +112,7 @@ List of solved problems:
 - [1550. Three Consecutive Odds](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1550.cpp)
 - [1561. Maximum Number of Coins You Can Get](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1561.cpp)
 - [1637. Widest Vertical Area Between Two Points Containing No Points](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1637.cpp)
+- [1669. Merge In Between Linked Lists](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1669.cpp)
 - [1672. Richest Customer Wealth](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1672.cpp)
 - [1678. Goal Parser Interpretation](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1678.cpp)
 - [1684. Count the Number of Consistent Strings](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1684.cpp)
