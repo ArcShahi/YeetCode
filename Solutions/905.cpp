@@ -1,4 +1,3 @@
-
 // 905. Sort Array By Parity
 
 #include <vector>

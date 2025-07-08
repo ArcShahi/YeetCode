@@ -1,4 +1,3 @@
-
 // 232. Implement Queue using Stacks
 
 #include <vector>

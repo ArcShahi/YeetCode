@@ -1,4 +1,3 @@
-
 // 1721. Swapping Nodes in a Linked List
 
 #include <utility>

@@ -1,4 +1,4 @@
- // 1979. Find Greatest Common Divisor of Array
+// 1979. Find Greatest Common Divisor of Array
 
 #include <numeric>
 #include <algorithm>

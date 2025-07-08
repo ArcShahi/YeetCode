@@ -1,4 +1,3 @@
-
 // 2413. Smallest Even Multiple
 
 #include <numeric> // for std::lcm

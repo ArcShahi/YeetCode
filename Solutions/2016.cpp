@@ -1,5 +1,5 @@
-
 // 2016. Maximum Difference Between Increasing Elements
+
 #include <vector>
 class Solution {
 public:

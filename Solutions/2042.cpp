@@ -1,5 +1,5 @@
-
 // 2042. Check if Numbers Are Ascending in a Sentence
+
 #include <sstream>
 #include <string>
 

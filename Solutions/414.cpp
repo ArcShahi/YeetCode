@@ -1,4 +1,3 @@
-
 // 414. Third Maximum Number
 
 #include <vector>

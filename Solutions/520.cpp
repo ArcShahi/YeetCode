@@ -1,4 +1,3 @@
-
 // 520. Detect Capital
 
 #include <string>

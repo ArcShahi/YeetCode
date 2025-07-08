@@ -1,4 +1,3 @@
-
 // 287. Find the Duplicate Number
 
 #include <vector>
