@@ -125,7 +125,7 @@
 - [1313. Decompress Run - Length Encoded List](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1313.cpp)
 - [1323. Maximum 69 Number](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1323.cpp)
 - [1346. Check If N and Its Double Exist](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1346.cpp)
-- [](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1365.cpp)
+- [1365. How Many Numbers Are Smaller Than the Current Number](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1365.cpp)
 - [1381. Design a Stack With Increment Operation](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1381.cpp)
 - [1389. Create Target Array in the Given Order](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1389.cpp)
 - [1394. Find Lucky Integer in an Array](https://github.com/ArcShahi/YeetCode/blob/main/Solutions/1394.cpp)
