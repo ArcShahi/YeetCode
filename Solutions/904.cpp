@@ -5,6 +5,8 @@
 
 // TIME COMPLEXITY : O(N)
 // SPACE COMPLEXITY :O(1)
+
+// Find the longest continuous sub array that has exactly 2 distinct elements
 class Solution {
 public:
      int totalFruit(std::vector<int>& fruits) {
