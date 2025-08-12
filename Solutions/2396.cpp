@@ -4,7 +4,7 @@
 // TIME COMPLEXITY : O(1)
 // SPACE COMPLEXITY : O(1)
 
-// Also it's broken... you can just return false and it will work
+// Also it's april fool prank... you can just return false and it will work
 class Solution {
 public:
      bool isStrictlyPalindromic(int n) {
