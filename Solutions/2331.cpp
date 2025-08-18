@@ -1,4 +1,4 @@
-// 2331. Evaluate Boolean Binary Tree\
+// 2331. Evaluate Boolean Binary Tree
 
 #include <vector>
 
