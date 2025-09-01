@@ -26,7 +26,7 @@ public:
 
           while (!stk.empty())
           {
-               auto [it, min, max] = stk.back(); stk.pop_back();
+              const auto [it, min, max] = stk.back(); stk.pop_back();
                if (!it) continue;
 
                if (it->val <= min || max <= it->val) return false;
