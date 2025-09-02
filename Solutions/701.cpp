@@ -37,3 +37,21 @@ public:
           return root;
      }
 };
+
+
+// RECURSIVE
+
+// TIME COMPLEXITY : O(H)
+// SPACE COMPLEXITY : O(1) ; But actual O(H) stack space for recursio
+
+class Solution {
+public:
+     TreeNode* insertIntoBST(TreeNode* root, int val) {
+
+          if (!root) return new TreeNode(val);
+          if (root->val < val) root->right = insertIntoBST(root->right, val);
+          else root->left = insertIntoBST(root->left, val);
+
+          return root;
+     }
+};
