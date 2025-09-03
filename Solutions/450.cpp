@@ -44,7 +44,7 @@
                 {
                      // Node has two children
                      // Find inorder successor (smallest in right subtree)
-                     auto min = find_min(root->right);
+                     auto min{ find_min(root->right) };
 
                      // Copy the successor's value to this node
                      root->val = min->val;
@@ -74,7 +74,7 @@
            TreeNode dummy{ 0 };
            dummy.left = root;
 
-           // Find the node and it's parent
+           // 1. Find the node and it's parent
            auto it{ root };
            TreeNode* parent{ &dummy };
 
@@ -99,8 +99,8 @@
            else 
            {
                 // Node has two children
-                auto succ = find_min(it->right);
-                TreeNode* succ_parent = find_parent(it, succ->val);
+                auto succ{ find_min(it->right) };
+                auto succ_parent{ find_parent(it, succ->val) };
 
                 it->val = succ->val;
                 replace_child(succ_parent, succ, succ->right);
@@ -109,23 +109,24 @@
            return dummy.left;
       }
  private:
-      int count_child(TreeNode* node) {
-           int count = 0;
+      int count_child(TreeNode* node) 
+      {
+           int count{ 0 };
            if (node->left) count++;
            if (node->right) count++;
            return count;
       }
 
-      TreeNode* find_min(TreeNode* node) {
+      TreeNode* find_min(TreeNode* node)
+      {
            while (node->left)node = node->left;
            return node;
       }
 
       TreeNode* find_parent(TreeNode* root,int key)
       {
-           TreeNode* parent{ root };
-
-           auto it = key < root->val ? root->left : root->right;
+           auto parent{ root };
+           auto it{ key < root->val ? root->left : root->right };
 
            while (it && it->val!=key)
            {
@@ -137,6 +138,7 @@
       }
 
       void replace_child(TreeNode* parent, TreeNode* old_child, TreeNode* new_child) {
+
            if (parent->left == old_child) parent->left = new_child;
            else parent->right = new_child;
       }
