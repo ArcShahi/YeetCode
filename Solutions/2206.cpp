@@ -15,8 +15,6 @@ public:
           for (const auto& i : nums)
                ++hashmap[i];
 
-          return std::all_of(begin(hashmap), end(hashmap), [](const auto& e) {
-               return e.second % 2 == 0;
-               });
+          return std::ranges::all_of(hashmap, [](const auto& e) { return e.second % 2 == 0; });
      }
 };
