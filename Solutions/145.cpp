@@ -11,6 +11,8 @@ struct TreeNode {
      TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
 
 // ITERATIVE
 
@@ -55,31 +57,24 @@ public:
      }
 };
 
-//  HACK : Modified pre-order
+//  RECURSION
 
-class Solution2 {
+class Solution {
 public:
-     std::vector<int> postorderTraversal(TreeNode* root) {
-
-          std::vector<int> vec{};
-          if (not root) return vec;
-
-          std::vector<TreeNode*> stack{};
-          stack.push_back(root);
-
-          while (not stack.empty())
-          {
-
-               auto node = stack.back();
-               stack.pop_back();
-
-               vec.push_back(node->val); //process node
-
-               if (node->left) stack.push_back(node->left);
-               if (node->right) stack.push_back(node->right);
-
-          }
-          std::reverse(begin(vec), end(vec));
+     std::vector<int> postorderTraversal(TreeNode* root)
+     {
+          dfs(root);
           return vec;
+     }
+private:
+     std::vector<int> vec{};
+
+     void dfs(TreeNode* node)
+     {
+          if (!node) return;
+
+          dfs(node->left);
+          dfs(node->right);
+          vec.push_back(node->val);
      }
 };
