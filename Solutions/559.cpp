@@ -21,7 +21,9 @@ public:
     }
 };
 
-// Iterative DFS  PRE_ORDER
+// Iterative DFS PRE-ORDER
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
 class Solution {
 public:
      int maxDepth(Node* root) {
@@ -34,21 +36,21 @@ public:
 
           while (!stack.empty())
           {
-               const auto [node, depth] {stack.back()};
-               stack.pop_back();
-
+               const auto [node, depth] {stack.back()}; stack.pop_back();
                max_depth = std::max(max_depth,depth);
 
                for (const auto& child : node->children)
-                    if (child)
-                         stack.push_back({ child,depth + 1 });
-
+                    if (child) stack.push_back({ child,depth + 1 });
           }
-
           return max_depth;
      }
 };
-// BFS Iterative
+
+// BFS
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
+
+
 class Solution {
 public:
      int maxDepth(Node* root) {
@@ -56,24 +58,19 @@ public:
           if (not root) return 0;
           std::deque<Node*> q{};
           q.push_back(root);
-          int max_depth{ 0 };
+          int depth{ 0 };
 
-          while (!q.empty())
+          for (; !q.empty(); ++depth)
           {
                auto width{ q.size() };
-
                while (width-->0)
                {
-                    const auto itr{ q.front() };
-                    q.pop_front();
-
-                    // Push all children to queue
-                    for (const auto& child : itr->children)
-                         if (child)
-                              q.push_back(child);
+                    const auto it{ q.front() }; q.pop_front();
+                    for (const auto& child : it->children)
+                         if (child) q.push_back(child);
                }
-               ++max_depth;
           }
-          return max_depth;
+
+          return depth;
      }
 };
