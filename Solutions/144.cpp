@@ -12,30 +12,53 @@
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
  
- // ITERATIVE
+// ITERATIVE
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
+
 
 class Solution {
 public:
      std::vector<int> preorderTraversal(TreeNode* root) {
 
           std::vector<int> vec{};
-
           if (not root) return vec;
 
-          std::vector<TreeNode*> stack{};
-          stack.push_back(root);
-          while (not stack.empty())
+          std::vector<TreeNode*> stk{};
+          stk.push_back(root);
+          while (not stk.empty())
           {
-               auto node = stack.back();
-               stack.pop_back();
+               const auto node = stk.back();
+               stk.pop_back();
 
                vec.push_back(node->val);
 
-               if (node->right) stack.push_back(node->right);
-               if (node->left) stack.push_back(node->left);
+               if (node->right) stk.push_back(node->right);
+               if (node->left) stk.push_back(node->left);
           }
           return vec;
 
+     }
+};
+
+// RECURSIVE
+
+class Solution {
+public:
+     std::vector<int> preorderTraversal(TreeNode* root) {
+
+          dfs(root);
+          return vec;
+     }
+private:
+     std::vector<int> vec{};
+
+     void dfs(TreeNode* node)
+     {
+          if (!node) return;
+          vec.push_back(node->val);
+          dfs(node->left);
+          dfs(node->right);
      }
 };
 
