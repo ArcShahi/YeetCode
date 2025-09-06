@@ -30,32 +30,30 @@ class Solution {
 public:
      std::vector<std::vector<int>> levelOrder(TreeNode* root) {
 
-          std::vector<std::vector<int>> level{};
-          if (not root) return level;
+          std::vector<std::vector<int>> vec{};
+          if (!root) return vec;
 
+          std::deque<TreeNode*> q{};
+          q.push_back(root);
 
-          std::queue<TreeNode*> q{};
-          q.push(root);
-
-          while (not q.empty())
+          while (!q.empty())
           {
-               std::vector<int> curr_lvl{};
-               int nodes = q.size(); // nodes at this level
+               std::vector<int> lvl{};
+               int width = q.size(); // nodes at this level
        
-               for (int i{ 0 }; i < nodes; ++i)
+               for (int i{ 0 }; i < width; ++i)
                {
-                    auto itr = q.front();
-                    q.pop();
+                    const auto it{ q.front() }; q.pop_front();
 
-                    curr_lvl.push_back(itr->val);
+                    lvl.push_back(it->val);
 
-                    if (itr->left) q.push(itr->left);
-                    if (itr->right)q.push(itr->right);
+                    if (it->left) q.push_back(it->left);
+                    if (it->right)q.push_back(it->right);
                }
 
-               level.push_back(curr_lvl);              
+               vec.push_back(lvl);              
           }
 
-          return level;
+          return vec;
      }
 };
