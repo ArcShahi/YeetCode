@@ -13,25 +13,28 @@
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
  
-  // DFS - PRE-ORDER
+// DFS - PRE-ORDER
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
+
+
 class Solution {
 public:
      bool hasPathSum(TreeNode* root, int targetSum) 
      {
-          if (not root) return false;
+          if (!root) return false;
 
-          std::vector<std::pair<TreeNode*, int>> stack{};
-          stack.push_back({ root,root->val });
+          std::vector<std::pair<TreeNode*, int>> stk{};
+          stk.push_back({ root,root->val });
 
-          while (!stack.empty())
+          while (!stk.empty())
           {
-               const auto [node, sum] {stack.back()};
-               stack.pop_back();
+               const auto [node, sum] {stk.back()};stk.pop_back();
 
                //  If leaf and sum found
                if (sum == targetSum && !node->left && !node->right) return true;
-               if (node->right) stack.push_back({ node->right,sum + node->right->val });
-               if (node->left) stack.push_back({ node->left,sum + node->left->val });
+               if (node->right) stk.push_back({ node->right,sum + node->right->val });
+               if (node->left) stk.push_back({ node->left,sum + node->left->val });
 
           }
           return false;
