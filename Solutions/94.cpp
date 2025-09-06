@@ -12,34 +12,34 @@
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
  
-
+ // TIME COMPLEXITY : O(N)
+ // SPACE COMPLEXITY : O(N)
 
  class Solution {
  public:
       std::vector<int> inorderTraversal(TreeNode* root) {
 
            std::vector<int> vec{};
-
            if (not root) return vec;
 
-           std::vector<TreeNode*> stack{};
-           auto itr{ root };
+           std::vector<TreeNode*> stk{};
+           auto it{ root };
            
-           while (itr || not stack.empty())
+           while (it || not stk.empty())
            {
                 // Iterate to leftmost node
-                while (itr)
+                while (it)
                 {
-                     stack.push_back(itr);
-                     itr = itr->left;
+                     stk.push_back(it);
+                     it = it->left;
                 }
 
-                // current will be nullptr, so fetch from top of stack
-                itr = stack.back(); 
-                stack.pop_back();
+                // current will be nullptr, so fetch from top of stk
+                it = stk.back(); 
+                stk.pop_back();
 
-                vec.push_back(itr->val); // prcoess the node
-                itr = itr->right;
+                vec.push_back(it->val); // prcoess the node
+                it = it->right;
            }
 
            return vec;
@@ -55,26 +55,48 @@
 
            if (not root) return vec;
 
-           std::vector<TreeNode*> stack{};
-           auto itr{ root };
+           std::vector<TreeNode*> stk{};
+           auto it{ root };
 
-           while (itr || not stack.empty()) {
+           while (it || not stk.empty()) {
 
-                if (itr) 
+                if (it) 
                 {
-                     stack.push_back(itr);
-                     itr = itr->left;
+                     stk.push_back(it);
+                     it = it->left;
                 }
                 else 
                 {
-                     itr = stack.back();
-                     stack.pop_back();
-
-                     vec.push_back(itr->val);  // process the node
-                     itr = itr->right;
+                     it = stk.back();
+                     stk.pop_back();
+                     vec.push_back(it->val);  // process the node
+                     it = it->right;
                 }
            }
-
            return vec;
       }
  };
+
+ // RECURSIVE
+
+ class Solution3 {
+ public:
+      std::vector<int> inorderTraversal(TreeNode* root) {
+
+           dfs(root);
+           return vec;
+      }
+ private:
+      std::vector<int> vec{};
+
+      void dfs(TreeNode* node)
+      {
+           if (!node) return;
+
+           dfs(node->left);
+           vec.push_back(node->val);
+           dfs(node->right);
+      }
+ };
+
+
