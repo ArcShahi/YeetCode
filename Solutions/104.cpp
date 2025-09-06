@@ -1,5 +1,6 @@
 // 104. Maximum Depth of Binary Tree
 #include <vector>
+#include <queue>
 
  struct TreeNode {
      int val;
@@ -11,6 +12,10 @@
  };
 
  // DFS PRE_ORDER
+
+ // TIME COMPLEXITY : O(N)
+ // SPACE COMPLEXITY: O(N)
+
 class Solution {
 public:
      int maxDepth(TreeNode* root)
@@ -24,9 +29,7 @@ public:
 
           while (!stack.empty())
           {
-               const auto [node, depth] {stack.back()};
-               stack.pop_back();
-
+               const auto [node, depth] {stack.back()}; stack.pop_back();
                max_depth = std::max(max_depth, depth);
 
                if (node->right) stack.push_back({ node->right,depth+1 });
@@ -37,5 +40,46 @@ public:
      }
 };
 
+// BFS
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY : O(N)
+
+class Solution {
+public:
+     int maxDepth(TreeNode* root)
+     {
+          if (not root) return 0;
+          
+          std::deque<TreeNode*> q{};
+          q.push_back(root);
+          int depth{ 0 };
+
+          for (; !q.empty(); ++depth)
+          {
+               int lvl = q.size();
+               while (lvl--)
+               {
+                    auto it{ q.front() }; q.pop_front();
+                    
+                    if (it->left) q.push_back(it->left);
+                    if (it->right) q.push_back(it->right);
+               }
+          }
+
+          return depth;
+     }
+};
 
 
+// RECURSIVE
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
+
+class Solution {
+public:
+     int maxDepth(TreeNode* root)
+     {
+          if (not root) return 0;
+          return 1 + std::max(maxDepth(root->left), maxDepth(root->right));
+     }
+};
