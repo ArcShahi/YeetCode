@@ -21,19 +21,20 @@ public:
      int maxDepth(TreeNode* root)
      {
           if (not root) return 0;
-          // Push node and current depth 
-          std::vector<std::pair<TreeNode*, int>> stack{};
 
-          stack.push_back({ root,1 });
+          
+          std::vector<std::pair<TreeNode*, int>> stk{};
+          // Push node and current depth 
+          stk.push_back({ root,1 });
           int max_depth{ 0 };
 
-          while (!stack.empty())
+          while (!stk.empty())
           {
-               const auto [node, depth] {stack.back()}; stack.pop_back();
+               const auto [node, depth] {stk.back()}; stk.pop_back();
                max_depth = std::max(max_depth, depth);
 
-               if (node->right) stack.push_back({ node->right,depth+1 });
-               if (node->left)stack.push_back({ node->left,depth+1});
+               if (node->right) stk.push_back({ node->right,depth+1 });
+               if (node->left)stk.push_back({ node->left,depth+1});
           }
          
           return max_depth;
@@ -56,10 +57,10 @@ public:
 
           for (; !q.empty(); ++depth)
           {
-               int lvl = q.size();
-               while (lvl--)
+               int width = q.size();
+               while (width--)
                {
-                    auto it{ q.front() }; q.pop_front();
+                    const auto it{ q.front() }; q.pop_front();
                     
                     if (it->left) q.push_back(it->left);
                     if (it->right) q.push_back(it->right);
