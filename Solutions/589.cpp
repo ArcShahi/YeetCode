@@ -32,9 +32,8 @@ public:
 
           if (!root) return vec;
 
-          std::vector<Node*> stk{};
-          stk.push_back(root);
-
+          std::vector<Node*> stk{root};
+  
           while (!stk.empty())
           {
                const auto it{ stk.back() }; stk.pop_back();
