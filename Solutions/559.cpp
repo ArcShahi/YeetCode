@@ -24,23 +24,23 @@ public:
 // Iterative DFS PRE-ORDER
 // TIME COMPLEXITY : O(N)
 // SPACE COMPLEXITY: O(N)
+
 class Solution {
 public:
      int maxDepth(Node* root) {
 
           if (not root) return 0;
 
-          std::vector<std::pair<Node*, int>> stack{};
-          stack.push_back({ root,1 });
+          std::vector<std::pair<Node*, int>> stk{ {root,1}};
           int max_depth{ 0 };
 
-          while (!stack.empty())
+          while (!stk.empty())
           {
-               const auto [node, depth] {stack.back()}; stack.pop_back();
+               const auto [node, depth] {stk.back()}; stk.pop_back();
                max_depth = std::max(max_depth,depth);
 
                for (const auto& child : node->children)
-                    if (child) stack.push_back({ child,depth + 1 });
+                    if (child) stk.push_back({ child,depth + 1 });
           }
           return max_depth;
      }
@@ -56,8 +56,7 @@ public:
      int maxDepth(Node* root) {
 
           if (not root) return 0;
-          std::deque<Node*> q{};
-          q.push_back(root);
+          std::deque<Node*> q{root};
           int depth{ 0 };
 
           for (; !q.empty(); ++depth)
@@ -72,5 +71,21 @@ public:
           }
 
           return depth;
+     }
+};
+
+// RECURSIVE PRE-ORDER
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY: O(N)
+
+class Solution {
+public:
+     int maxDepth(Node* root) {
+          if (!root) return 0;
+          int depth{ 0 };
+
+          // we can also use std::transform_reduce to get rid of loop
+          for (const auto& child : root->children) depth = std::max(depth, maxDepth(child));
+          return 1 + depth;
      }
 };
