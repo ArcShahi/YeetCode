@@ -1,7 +1,6 @@
 // 116. Populating Next Right Pointers in Each Node
 
 
-
 // Definition for a Node.
 class Node {
 public:
@@ -11,15 +10,12 @@ public:
     Node* next;
 
     Node() : val(0), left(nullptr), right(nullptr), next(nullptr) {}
-
     Node(int _val) : val(_val), left(nullptr), right(nullptr), next(nullptr) {}
-
     Node(int _val, Node* _left, Node* _right, Node* _next)
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 
 // BFS
-
 // TIME COMPLEXITY O(n)
 // SPACE COMPLEXITY :O(1)
 
@@ -34,19 +30,18 @@ public:
 
           while (lvl->left) 
           {    
-               auto itr{ lvl };
+               auto it{ lvl };
 
-               while (itr) 
+               while (it) 
                {
                     // Connect left child to right child
-                    itr->left->next = itr->right;
+                    it->left->next = it->right;
 
                     // Connect right child to next node's left child
-                    if (itr->next) {
-                         itr->right->next = itr->next->left;
-                    }
-
-                    itr = itr->next;
+                    if (it->next)
+                         it->right->next = it->next->left;
+                   
+                    it = it->next;
                }
 
                lvl = lvl->left; 

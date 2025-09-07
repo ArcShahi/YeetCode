@@ -18,38 +18,42 @@ public:
 };
 
 // Connecting them Like linked list
+
 class Solution {
 public:
      Node* connect(Node* root) {
 
           if (!root) return nullptr;
 
-          auto itr{ root };
-
-          while (itr)
+          auto it{ root };
+          while (it)
           {
                Node snode{};
                auto tail{ &snode };
 
                // Iterate current level
-               while (itr)
+               while (it)
                {
-                    if (itr->left)
+                    if (it->left)
                     {
-                         tail->next = itr->left;
+                         tail->next = it->left;
                          tail = tail->next;
                     }
 
-                    if (itr->right)
+                    if (it->right)
                     {
-                         tail->next = itr->right;
+                         tail->next = it->right;
                          tail = tail->next;
                     }
 
-                    itr = itr->next;
+                    it = it->next;
                }
-               itr = snode.next;
+               it = snode.next;
           }
           return root;
      }
 };
+
+/*
+ Traverse level by level and connect them like linked lists
+*/

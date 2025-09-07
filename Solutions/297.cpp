@@ -16,15 +16,18 @@
      TreeNode *right;
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  };
- // TIME COMPLEXITY : O(n)
- // SPACE COMPLEXITY : O(n);
+
+
+ // TIME COMPLEXITY : O(N)
+ // SPACE COMPLEXITY : O(N);
+ // Marking nullptr as '*'
  
 class Codec {
 public:
 
      // Encodes a tree to a single string.
      std::string serialize(TreeNode* root)
-     {
+     { 
           if (!root) return "*";
 
           std::ostringstream oss{}; 
@@ -50,23 +53,21 @@ public:
                oss << ',';
           }
 
-          
+          // Remove trailing '*'s
           auto tree{ oss.str() };
-          // trim trailing "*"
-          tree.erase(std::find_if(rbegin(tree), rend(tree),
-               [](char c) { return c != ',' && c != '*'; }).base(), end(tree));
+          tree.erase(std::find_if(rbegin(tree), rend(tree), [](char x)
+               {return x != ',' && x != '*'; }).base());
 
           return tree;
      }
 
      // Decodes your encoded data to tree.
      TreeNode* deserialize(std::string data) {
-
-          constexpr int nil{ -1111 }; // can act as null marker cuz , contraint [-1000,1000]
+      
           auto stem{parse_tree(data)};
+          const int stem_size = stem.size();
 
-
-          if (stem.empty() || stem[0] == nil) return nullptr;
+          if (!stem_size || stem[0] == NIL) return nullptr;
 
           // BUILD TREE
           auto root{ new TreeNode(stem[0]) };
@@ -81,7 +82,7 @@ public:
                q.pop_front();
 
                // Left child
-               if (index < stem.size() && stem[index] != nil)
+               if (index < stem_size && stem[index] != NIL)
                {
                     parent->left = new TreeNode(stem[index]);
                     q.push_back(parent->left);
@@ -89,7 +90,7 @@ public:
                ++index;
 
                // Right child
-               if (index < stem.size() && stem[index] != nil)
+               if (index < stem_size && stem[index] != NIL)
                {
                     parent->right = new TreeNode(stem[index]);
                     q.push_back(parent->right);
@@ -100,8 +101,10 @@ public:
      }
 
 private:
+     // Acts as null marker cuz, contraint[-1000, 1000]
+     static constexpr int NIL{ -1111 }; 
 
-     std::vector<int> parse_tree(const std::string& data, const int nil = -1111)
+     std::vector<int> parse_tree(const std::string& data)
      {
           std::vector<int> tree{};
           tree.reserve(data.size() / 2);
@@ -111,7 +114,7 @@ private:
           while (std::getline(iss, token, ','))
           {
                if (token == "*")
-                    tree.push_back(nil);
+                    tree.push_back(NIL);
                else
                     tree.push_back(std::stoi(token));
           }
