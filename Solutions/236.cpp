@@ -1,8 +1,9 @@
 // 236. Lowest Common Ancestor of a Binary Tree
 
-#include <vector>
+#include <deque>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
  struct TreeNode {
      int val;
@@ -11,56 +12,89 @@
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  };
  
-class Solution {
-public:
-     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+ // ITERATIVE
+ // TIME COMPLEXITY : O(N)
+ // SPACE COMPLEXITY : O(N)
 
-          if (!root) return nullptr;
+ class Solution {
+ public:
+      TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+           if (!root) return nullptr;
 
-          // child->parent
-          std::unordered_map<TreeNode*, TreeNode*> parent{};
-          std::vector<TreeNode*> stk{};
+           // Child to Parent Map
+           std::unordered_map<TreeNode*, TreeNode*> parent{ {root,nullptr}};
+           std::deque<TreeNode*> dq{root};
 
-          parent[root] = nullptr;
-          stk.push_back(root);
+           // BFS until both nodes found
+           while (!parent.count(p) || !parent.count(q)) {
+                
+                const auto node{ dq.front() }; dq.pop_front();
 
-          while (!parent.count(p) || !parent.count(q))
-          {
-               auto itr{ stk.back() };
-               stk.pop_back();
+                if (node->left) {
+                     parent[node->left] = node;
+                     dq.push_back(node->left);
+                }
+                if (node->right) {
+                     parent[node->right] = node;
+                     dq.push_back(node->right);
+                }
+           }
 
-               if (itr->left)
-               {
-                    parent[itr->left] = itr;
-                    stk.push_back(itr->left);
-               }
-               if (itr->right)
-               {
-                    parent[itr->right] = itr;
-                    stk.push_back(itr->right);
-               }
-          }
+           std::unordered_set<TreeNode*> ancestors{};
+           for (auto it = p; it; it = parent[it])
+                ancestors.insert(it);
 
-          std::unordered_set<TreeNode*> ancestors{};
+           // if found it ancestors that is LCA
+           while (!ancestors.count(q)) q = parent[q];
 
-          while (p)
-          {
-               ancestors.insert(p);
-               p = parent[p];
-          }
-          while (!ancestors.count(q))
-          {
-               q = parent[q];
-          }
+           return q;
+      }
+ };
 
-          return q;
-     }
-};
+// ITERATIVE DFS
+// TIME COMPLEIXTY : O(N)
+// SPACE COMPLEXITY : O(N) 
 
-// Recursive
+ class Solution {
+ public:
+      TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+           if (!root) return nullptr;
 
-// I'll only allow it for post order stuff
+           // Child to Parent Map
+           std::unordered_map<TreeNode*, TreeNode*> parent{ {root,nullptr}};
+           std::vector<TreeNode*> stk{root};
 
+           // BFS until both nodes found
+           while (!parent.count(p) || !parent.count(q)) {
+                
+                const auto node{ stk.back() }; stk.pop_back();
+
+                if (node->right) {
+                     parent[node->right] = node;
+                     stk.push_back(node->right);
+                }
+                if (node->left) {
+                     parent[node->left] = node;
+                     stk.push_back(node->left);
+                }
+                
+           }
+
+           std::unordered_set<TreeNode*> ancestors{};
+           for (auto it = p; it; it = parent[it])
+                ancestors.insert(it);
+
+           // if found it ancestors that is LCA
+           while (!ancestors.count(q)) q = parent[q];
+
+           return q;
+      }
+ };
+
+
+// RECURSIVE
+// TIME COMPLEIXTY : O(N)
+// SPACE COMPLEXITY : O(N) 
 
 class Solution2 {
 public:
