@@ -36,20 +36,20 @@ public:
 
           for (int i{ 1 }; i < preorder.size(); ++i)
           {
-               auto node{ new TreeNode(preorder[i]) };
+               auto it{ new TreeNode(preorder[i]) };
                TreeNode* parent{ nullptr };
 
                // Find correct parent by popping nodes that should be ancestors
-               while (!stk.empty() && pos[stk.back()->val]< pos[node->val])
+               while (!stk.empty() && pos[stk.back()->val]< pos[it->val])
                {
                     parent = stk.back();
                     stk.pop_back();
                }
 
-               if (parent) parent->right = node;
-               else stk.back()->left = node;
+               if (parent) parent->right = it;
+               else stk.back()->left = it;
 
-               stk.push_back(node);
+               stk.push_back(it);
           }
           return root;
      }
