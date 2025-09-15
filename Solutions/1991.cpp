@@ -1,0 +1,24 @@
+// 1991. Find the Middle Index in Array
+
+#include <vector>
+#include <numeric>
+
+// TIME COMPLEXITY : O(N)
+// SPACE COMPLEXITY : O(1)
+
+class Solution {
+public:
+     int findMiddleIndex(std::vector<int>& nums) {
+
+          int sum{ std::accumulate(begin(nums),end(nums),0) };
+          int left{ 0 };
+
+          for (int i{ 0 }; i < nums.size(); ++i)
+          {
+               int right{ sum - left - nums[i] };
+               if (right == left) return i;
+               left += nums[i];
+          }
+          return -1;
+     }
+};
