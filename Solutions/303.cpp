@@ -1,18 +1,15 @@
 // 303. Range Sum Query - Immutable
 
 #include <vector>
-#include <algorithm>
-
+#include <numeric>
+#include <iterator>
 
 class NumArray {
 public:
      NumArray(std::vector<int>& nums) {
        
-          int sum{ 0 };
-          cached.reserve(nums.size()); 
-          std::ranges::transform(nums, end(cached), [&](int x) {
-               sum += x;return sum; 
-               });
+          cached.reserve(nums.size());
+          std::partial_sum(begin(nums), end(nums), std::back_inserter(cached));
      }
 
      int sumRange(int left, int right) {
