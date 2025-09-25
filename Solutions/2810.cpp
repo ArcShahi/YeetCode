@@ -2,6 +2,7 @@
 
 #include <string>
 #include <algorithm>
+
 // TIME COMPLEXITY : O(n)
 // SPACE COMPLEXITY : O(n)
 
@@ -13,7 +14,7 @@ public:
           for (const auto c : s)
           {
                if (c == 'i')
-                    std::reverse(begin(str), end(str));
+                    std::ranges::reverse(str);
                else
                     str.push_back(c);
           }
