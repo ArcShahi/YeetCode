@@ -2,6 +2,10 @@
 
 #include <string>
 
+// TIME COMPLEXITY : O(N)
+// SPACE COMPELXITY : O(1)
+
+
 class Solution {
 public:
      bool isPalindrome(std::string& s) {
@@ -9,14 +13,16 @@ public:
           auto l{ s.begin() };
           auto r{ s.end() - 1 };
 
+          auto l{ begin(s) }, r{ end(s) - 1 };
+
           while (l<r)
           {
-               if (not isalnum(*l))
+               if (!isalnum(*l))
                {
                     ++l;
                     continue;
                }
-               if (not isalnum(*r))
+               if (!isalnum(*r))
                {
                     --r;
                     continue;
