@@ -9,9 +9,6 @@
 class Solution {
 public:
      bool isPalindrome(std::string& s) {
-          
-          auto l{ s.begin() };
-          auto r{ s.end() - 1 };
 
           auto l{ begin(s) }, r{ end(s) - 1 };
 
