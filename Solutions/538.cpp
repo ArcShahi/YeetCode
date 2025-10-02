@@ -55,9 +55,11 @@ class Solution {
 public:
 	TreeNode* convertBST(TreeNode* root) {
 
-		
+		dfs(root);
+		return root;
 	}
 private:
+	
 	int sum{ 0 };
 
 	TreeNode* dfs(TreeNode* root)
@@ -68,5 +70,7 @@ private:
 		sum += root->val;
 		root->val = sum;
 		dfs(root->left);
+
+		return root;
 	}
 };
