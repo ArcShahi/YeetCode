@@ -11,19 +11,17 @@
      ListNode(int x, ListNode *next) : val(x), next(next) {}
  };
  
+ // TIME COMPLEXITY : O(N)
+ // SPACE COMPLEXITY : O(1)
+
  class Solution {
  public:
       ListNode* middleNode(ListNode* head)
       {
-
            auto slow{ head };
-           auto fast{ head };
-
-           while (fast && fast->next)
-           {
+           for (auto fast = head; fast && fast->next; fast = fast->next->next)
                 slow = slow->next;
-                fast = fast->next->next;
-           }
+
            return slow;
       }
  };
