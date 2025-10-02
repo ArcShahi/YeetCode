@@ -31,7 +31,7 @@ public:
 			if (it)
 			{
 				stk.push_back(it);
-				it = it->right;;
+				it = it->right;
 			}
 			else
 			{
